@@ -24,7 +24,7 @@ import dev.mbo.accountz.shared.validation.Validatable
 data class BankDetails(
     val iban: IBAN,
     val bic: BIC,
-) : Validatable<Array<Validatable<*>>> {
+) : Validatable<Array<Validatable<String>>> {
 
     companion object {
         val COMMON_ERROR_CODE = BankDetails::class.java.simpleName.lowercase()
@@ -33,7 +33,7 @@ data class BankDetails(
         )
     }
 
-    override fun getData(): Array<Validatable<*>> {
+    override fun getData(): Array<Validatable<String>> {
         return arrayOf(iban, bic)
     }
 }
